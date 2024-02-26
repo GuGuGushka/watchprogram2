@@ -1,8 +1,8 @@
 public class Watch {
 
-    private static int hours = 0;
-    private static int minutes = 0;
-    private static int seconds = 0;
+    private static int hours;
+    private static int minutes;
+    private static int seconds;
 
     public Watch(int hours, int minutes, int seconds) {
         this.hours = hours;
@@ -19,6 +19,9 @@ public class Watch {
     }
 
     public int getSeconds() {
+        while (seconds < 60){
+            seconds += 1;
+        }
         return seconds;
     }
 

@@ -1,25 +1,22 @@
 import java.util.Timer;
 import java.util.TimerTask;
+
 public class Main {
 
-    public static Watch someFunc(){
-        return new Watch(0, 0, 0);
-    }
     public static void main(String[] args) {
-        Watch watch = someFunc();
-        boolean islife = true;
+        Watch watch = new Watch(0, 0, 0);
+
         Timer timer = new Timer();
-        long delay = 1000L;
-        long peroid = 1000L;
 
-        while (islife) {
-            TimerTask task = new TimerTask() {
-                public void run() {
-                    System.out.println(watch.getHours() + ":" + watch.getMinutes() + ":" + watch.getSeconds());
-                }
+        TimerTask task = new TimerTask() {
+            public void run() {
+                System.out.println(watch.toPrettyString());
 
-            };
-            timer.scheduleAtFixedRate(task, delay, peroid);
-        }
+                watch.tick();
+            }
+
+        };
+        timer.schedule(task, 0, 1000L);
+
     }
 }

@@ -1,8 +1,7 @@
 public class Watch {
-
-    private static int hours;
-    private static int minutes;
-    private static int seconds;
+    private int hours;
+    private int minutes;
+    private int seconds;
 
     public Watch(int hours, int minutes, int seconds) {
         this.hours = hours;
@@ -19,10 +18,51 @@ public class Watch {
     }
 
     public int getSeconds() {
-        while (seconds < 60){
-            seconds += 1;
-        }
         return seconds;
     }
+
+    public void tick() {
+        seconds++;
+
+        if (seconds == 60) {
+            seconds = 0;
+            minutes++;
+        }
+
+        if (minutes == 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+
+    public String toPrettyString() {
+        String output = "";
+
+        if (hours < 10) {
+            output += "0" + hours;
+        } else {
+            output += hours;
+        }
+
+        output += ":";
+
+        if (minutes < 10) {
+            output += "0" + minutes;
+        } else {
+            output += minutes;
+        }
+
+        output += ":";
+
+        if (seconds < 10) {
+            output += "0" + seconds;
+        } else {
+            output += seconds;
+        }
+
+        return output;
+
+    }
+
 
 }

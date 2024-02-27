@@ -33,6 +33,12 @@ public class Watch {
             minutes = 0;
             hours++;
         }
+
+        if (hours == 24){
+            hours = 0;
+            minutes = 0;
+            seconds++;
+        }
     }
 
     public String toPrettyString() {
